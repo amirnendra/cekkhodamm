@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cek Khodam Anda!</title>
+    <style>
+        /* ===== Global Styles ===== */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background: linear-gradient(120deg, #f6d365, #fda085); /* Gradasi warna latar */
+            color: #333333; /* Warna teks */
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #ffffff; /* Warna putih untuk judul */
+            animation: bounce 1.5s infinite; /* Animasi bounce untuk judul */
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        p {
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        /* ===== Result Animation ===== */
+        #result {
+            margin-top: 20px;
+            font-size: 27px;
+            color: #ffef61; /* Kuning cerah */
+            font-weight: bold;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.5s ease-in-out;
+        }
+
+        #result.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ===== Button Styling ===== */
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background: linear-gradient(45deg, #6a11cb, #2575fc); /* Gradasi biru ke ungu */
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #2575fc, #6a11cb); /* Gradasi balik saat hover */
+            transform: scale(1.1);
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== Input Field Styling ===== */
+        input {
+            padding: 12px;
+            font-size: 16px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            width: 80%;
+            max-width: 300px;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== Credit Section ===== */
+        footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #ffffff;
+            opacity: 0.8;
+        }
+
+        footer a {
+            color: #ffef61; /* Kuning cerah */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== Background Animation ===== */
+        body:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/3ZDT5dp.png') repeat; /* Gambar hewan kartun */
+            opacity: 0.05;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cek Khodam Anda!</h1>
+    <p>Masukkan nama Anda untuk mengetahui khodam hewan lucu Anda:</p>
+    <input type="text" id="nameInput" placeholder="Masukkan nama Anda" />
+    <br />
+    <button onclick="cekKhodam()">Klik untuk cek</button>
+    <p id="result"></p>
+
+    <footer>
+        Dibuat dengan ❤️ oleh <a href="https://www.instagram.com/amirnendra" target="_blank">@amirnendra</a>
+    </footer>
+
+    <script>
+        function cekKhodam() {
+            // Daftar Khodam
+            var khodamList = [
+                "Kucing yang suka rebahan dan ngemil", 
+                "Monyet yang sering nge-prank temannya", 
+                "Panda yang hobi makan bambu sambil nonton Netflix", 
+                "Koala yang selalu telat bangun", 
+                "Burung Hantu yang begadang tiap malam scroll medsos", 
+                "Kelinci yang ngidam wortel 24/7", 
+                "Anjing yang joget TikTok tiap pagi", 
+                "Tupai yang sembunyiin kacang terus lupa tempatnya", 
+                "Lumba-lumba yang jadi penyanyi di laut", 
+                "Kura-kura yang ngaku pelari tercepat di dunia", 
+                "Gajah kecil yang takut sama tikus", 
+                "Bebek yang sering selfie di kolam", 
+                "Kangguru yang punya koleksi sneakers mahal", 
+                "Ikan mas yang sering nyanyi karaoke di akuarium", 
+                "Kucing Persia yang punya salon pribadi", 
+                "Burung Merak yang ikut ajang pencarian bakat"
+            ];
+
+            // Ambil Nama dari Input
+            var name = document.getElementById('nameInput').value.trim();
+            if (name === "") {
+                document.getElementById('result').innerText = "Harap masukkan nama Anda!";
+                document.getElementById('result').classList.add('show');
+                return;
+            }
+
+            // Pilih Khodam Acak
+            var randomIndex = Math.floor(Math.random() * khodamList.length);
+            var selectedKhodam = khodamList[randomIndex];
+
+            // Tampilkan Hasil dengan Animasi
+            var resultElement = document.getElementById('result');
+            resultElement.innerText = `Khodam ${name} adalah ${selectedKhodam}!`;
+            resultElement.classList.add('show'); // Tambahkan kelas untuk animasi
+        }
+    </script>
+</body>
+</html>
